@@ -9,12 +9,15 @@ const main = document.querySelector('main')
 const books = document.querySelector('.books')
 
 const myLibrary = []
-
-function Book(title, author, page, read){
-    this.title = title
-    this.author = author
-    this.page = page
-    this.read = read
+let idCount = 1
+class Book {
+    constructor(title, author, page, read, id) {
+      this.title = title;
+      this.author = author;
+      this.page = page;
+      this.read = read;
+      this.id = id
+    }
 }
 
 function openModal(){
@@ -30,29 +33,35 @@ function getReadState(){
     }
 }
 
-function changeRead(readState){
-    let state = readState.parentElement.childNodes[7].childNodes[1].data
-    myLibrary.forEach((book) => {
-        if(state == "Not yet"){
-            book.read = "Already read"
-            render()
-        }else{
-            book.read = "Not yet"
-            render()
-        }
+function changeRead(bookTitle){
+    let title = bookTitle.parentElement.firstElementChild.innerHTML
+    let i = findBook(title)
+    if(myLibrary[i].read === "Already read"){
+        myLibrary[i].read = "Not yet"
+    }else{
+        myLibrary[i].read = "Already read"
+    }
+    render()
+    // let found = myLibrary.find((bok) => bok.title === title )
+    // if(found.read === "Already read"){
       
-    })
+    // }else if(found.read === "Not yet"){
+    //     found.read ="Already read"
+    //     render()
+    // }
+  
 }
 
 function addBookToLibrary(){
     if(title.value && author.value && page.value){
-        const b = new Book(title.value, author.value, page.value, getReadState(read.checked))
+        const b = new Book(title.value, author.value, page.value, getReadState(read.checked), idCount++)
         myLibrary.push(b)
         author.value = ""
         title.value = ""
         page.value = ""
         modal.style.display = ('none')
         main.style.filter = "none"
+        console.log(myLibrary);
         render()
     }else{
         alert('Fill out the inputs!')
@@ -61,17 +70,24 @@ function addBookToLibrary(){
 
 function removeBooks(bookTitle){
     let title = bookTitle.parentElement.firstElementChild.innerHTML
-    myLibrary.forEach((book, index) => {
-        book.title ===  title ? myLibrary.splice(index, 1) : myLibrary
-    })
+    myLibrary.splice(findBook(title), 1)
     render()
+}
+
+
+function findBook(title){
+    for(let book of myLibrary){
+        if(book.title === title){
+            return myLibrary.indexOf(book)
+        }
+    }
 }
 
 function render(){
     books.innerHTML = ""
     myLibrary.forEach((book) => {
         books.innerHTML += `    
-        <div>
+    <div>
         <h2 id="title">${book.title}</h2> 
         <p><span>Author: </span>${book.author}</p>
         <p><span>Pages: </span>${book.page}</p>

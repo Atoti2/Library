@@ -1,5 +1,3 @@
-
-
 body{
     background-color: #243747;
 }
@@ -106,12 +104,15 @@ label{
     margin-right: 10px;
     transition-duration:300ms ;
 }
+
 .books button:hover{
     transform: scale(1.07);
 }
+
 .del{
     background-color: red;
 }
+
 .read{
     background-color: green;
 }
