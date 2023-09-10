@@ -1,3 +1,5 @@
+
+
 body{
     background-color: #243747;
 }
@@ -25,34 +27,60 @@ h1{
 }
 
 .addBook{
-    width: 100%;
+    width: 120px;
+    margin: auto;
+    background-color: #e3d3e3;
+    border: none;
+    border-radius: 10px;
     padding: 8px;
     margin-top: 15px;
     cursor: pointer;
+    transition-duration: 300ms;
 }
-
-.visible{
-    visibility: visible;
-}
-.invisible{
-    visibility: hidden;
+.addBook:hover{
+    transform: scale(1.1);
 }
 
 .modal{
-    background-color: beige;
-    width: 300px;
-    padding: 10px;
-    margin-top: 30px !important; 
-    border-radius: 5px;
-    margin: 0 auto;
-    justify-content: center;
-    align-items: center;
+    animation-name: popup;
+    animation-duration: 1s;
+    display: none;
+    border-radius: 10px;
+    position: fixed;
+    z-index: 1;
+    padding-top: 100px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 50%;
+    height: 50%;
+    overflow: auto;
+    background-color: #15141f;
+}
+
+.modal-content{
     display: flex;
     flex-direction: column;
-
+    background-color: #7f6a7c;
+    margin: auto;
+    padding: 20px;
+    width: 80%;
 }
+
 .modal input{
     padding: 8px;
     margin: 5px;
     border-radius: 4px;
+    background-color: #e3d3e3;
+    border: none;
+}
+.modal input::placeholder{
+    color: #243747;
+}
+
+@keyframes popup{
+    from{
+        opacity: 0;
+    }
+    to{opacity: 1;}
 }

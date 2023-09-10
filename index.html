@@ -8,19 +8,20 @@
     <script src="script.js" defer></script>
 </head>
 <body>
-    <h1>Odin Library</h1>
-    <div id="btn">
-        <button class="open" onclick="openModal()">Add new book</button>
+    <div class="modal">
+        <div class="modal-content">
+            <input type="text" placeholder="Book title" class="title">
+            <input type="text" placeholder="Book author" class="author">
+            <input type="text" placeholder="Book page" class="page">
+            <button class="addBook" onclick="addBookToLibrary()">Add book</button>
+        </div>
     </div>
- 
-    <div class="modal invisible">
-        <input type="text" placeholder="Book title" class="title">
-        <input type="text" placeholder="Book author" class="author">
-        <input type="text" placeholder="Book page" class="page">
-        <button class="addBook" onclick="addBookToLibrary()">Add book</button>
-    </div>
-   
-
-   
+    <main>
+        <h1>Odin Library</h1>
+        <div id="btn">
+            <button class="open" onclick="openModal()">Add new book</button>
+        </div>
+     
+    </main>
 </body>
 </html>

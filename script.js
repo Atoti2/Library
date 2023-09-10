@@ -3,6 +3,7 @@ const title = document.querySelector('.title')
 const page = document.querySelector('.page')
 const button = document.querySelector('.add')
 const modal = document.querySelector('.modal')
+const main = document.querySelector('main')
 const myLibrary = []
 
 function Book(title, author, page){
@@ -12,9 +13,8 @@ function Book(title, author, page){
 }
 
 function openModal(){
-    if(modal.classList.contains('invisible')){
-        modal.classList.remove('invisible')
-    }
+   modal.style.display = "block"
+   main.style.filter = "blur(5px)"
 }
 
 function addBookToLibrary(){
@@ -23,7 +23,8 @@ function addBookToLibrary(){
     author.value = ""
     title.value = ""
     page.value = ""
-    modal.classList.add('invisible')
+    modal.style.display = ('none')
+    main.style.filter = "none"
     console.log(myLibrary);
 }
 
