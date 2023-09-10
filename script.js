@@ -76,8 +76,8 @@ function render(){
         <p><span>Author: </span>${book.author}</p>
         <p><span>Pages: </span>${book.page}</p>
         <p><span>Read: </span>${book.read}</p>
-        <button onclick="removeBooks(this)">Delete</button>
-        <button onclick="changeRead(this)">Read</button>
+        <button class="del" onclick="removeBooks(this)">Delete</button>
+        <button class="read" onclick="changeRead(this)">Read</button>
     </div>`
     })
 }
