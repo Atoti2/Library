@@ -13,13 +13,28 @@
             <input type="text" placeholder="Book title" class="title">
             <input type="text" placeholder="Book author" class="author">
             <input type="text" placeholder="Book page" class="page">
-            <button class="addBook" onclick="addBookToLibrary()">Add book</button>
+            <div>
+                <input type="checkbox" name="read" id="read">
+                <label for="read">Already read</label>
+            </div>
+        
+            <input type="submit" value="Add book" class="addBook" onclick="addBookToLibrary()"></input>
         </div>
     </div>
     <main>
         <h1>Odin Library</h1>
         <div id="btn">
             <button class="open" onclick="openModal()">Add new book</button>
+        </div>
+        <div class="books">
+            <div>
+                <h2 id="title">Harry Potter</h2> 
+                <p><span>Author: </span>Ferike</p>
+                <p><span>Pages: </span> 532</p>
+                <p><span>Read: </span>Not yet</p>
+                <button class="del" onclick="removeBooks(this)">Delete</button>
+                <button class="read" onclick="changeRead(this)">Read</button>
+            </div>
         </div>
      
     </main>
