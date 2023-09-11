@@ -19,7 +19,14 @@ class Book {
     }
 }
 
-let myLibrary = [{}]
+let newBook
+let myLibrary = [{
+    title: 'Harry potter',
+    author: 'Ferike',
+    page: 32,
+    read: 'Not yet',
+    id: 1,
+}]
 
 render()
 
@@ -29,7 +36,6 @@ function setLocalStorage(){
 
 function getLocalStorage(){
     myLibrary = JSON.parse(localStorage.getItem("library"))
-
 }
 
 function openModal(){
@@ -58,10 +64,9 @@ function changeRead(bookTitle){
 }
 
 function addBookToLibrary(){
-    localStorage.clear()
-    getLocalStorage()
     if(title.value && author.value && page.value){
-        myLibrary.push(new Book(title.value, author.value, page.value, getReadState(read.checked), idCount++))
+        newBook = new Book(title.value, author.value, page.value, getReadState(read.checked), idCount++)
+        myLibrary.push(newBook)
         author.value = ""
         title.value = ""
         page.value = ""
@@ -91,20 +96,17 @@ function findBook(title){
 }
 
 function render(){
-    getLocalStorage()
+    setLocalStorage()
     books.innerHTML = ""
-    if(myLibrary !== null){
-        myLibrary.forEach((book) => {
-            books.innerHTML += `    
-        <div>
-            <h2 id="title">${book.title}</h2> 
-            <p><span>Author: </span>${book.author}</p>
-            <p><span>Pages: </span>${book.page}</p>
-            <p><span>Read: </span>${book.read}</p>
-            <button class="del" onclick="removeBooks(this)">Delete</button>
-            <button class="read" onclick="changeRead(this)">Read</button>
-        </div>`
-        })
-    }
-
+    myLibrary.forEach((book) => {
+        books.innerHTML += `    
+    <div>
+        <h2 id="title">${book.title}</h2> 
+        <p><span>Author: </span>${book.author}</p>
+        <p><span>Pages: </span>${book.page}</p>
+        <p><span>Read: </span>${book.read}</p>
+        <button class="del" onclick="removeBooks(this)">Delete</button>
+        <button class="read" onclick="changeRead(this)">Read</button>
+    </div>`
+    })
 }
