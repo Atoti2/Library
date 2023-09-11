@@ -7,16 +7,8 @@ const button = document.querySelector('.add')
 const modal = document.querySelector('.modal')
 const main = document.querySelector('main')
 const books = document.querySelector('.books')
-
-let myLibrary = [{
-    title: 'Harry potter',
-    author: 'Ferike',
-    page: 32,
-    read: 'Not yet',
-    id: 1,
-}]
-
 let idCount = 1
+
 class Book {
     constructor(title, author, page, read, id) {
       this.title = title;
@@ -26,6 +18,16 @@ class Book {
       this.id = id
     }
 }
+
+let myLibrary = [{
+    title: 'Harry potter',
+    author: 'Ferike',
+    page: 32,
+    read: 'Not yet',
+    id: 1,
+}]
+
+
 
 function setLocalStorage(){
     localStorage.setItem("library", JSON.stringify(myLibrary))
