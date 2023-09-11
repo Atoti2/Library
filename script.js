@@ -64,8 +64,7 @@ function changeRead(bookTitle){
 
 function addBookToLibrary(){
     if(title.value && author.value && page.value){
-        const b = new Book(title.value, author.value, page.value, getReadState(read.checked), idCount++)
-        myLibrary.push(b)
+        myLibrary.push(new Book(title.value, author.value, page.value, getReadState(read.checked), idCount++))
         author.value = ""
         title.value = ""
         page.value = ""
@@ -97,15 +96,18 @@ function findBook(title){
 function render(){
     getLocalStorage()
     books.innerHTML = ""
-    myLibrary.forEach((book) => {
-        books.innerHTML += `    
-    <div>
-        <h2 id="title">${book.title}</h2> 
-        <p><span>Author: </span>${book.author}</p>
-        <p><span>Pages: </span>${book.page}</p>
-        <p><span>Read: </span>${book.read}</p>
-        <button class="del" onclick="removeBooks(this)">Delete</button>
-        <button class="read" onclick="changeRead(this)">Read</button>
-    </div>`
-    })
+    if(myLibrary !== null){
+        myLibrary.forEach((book) => {
+            books.innerHTML += `    
+        <div>
+            <h2 id="title">${book.title}</h2> 
+            <p><span>Author: </span>${book.author}</p>
+            <p><span>Pages: </span>${book.page}</p>
+            <p><span>Read: </span>${book.read}</p>
+            <button class="del" onclick="removeBooks(this)">Delete</button>
+            <button class="read" onclick="changeRead(this)">Read</button>
+        </div>`
+        })
+    }
+
 }
