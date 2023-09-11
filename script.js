@@ -9,7 +9,11 @@ const main = document.querySelector('main')
 const books = document.querySelector('.books')
 
 let myLibrary = [{
-
+    title: 'Harry potter',
+    author: 'Ferike',
+    page: 32,
+    read: 'Not yet',
+    id: 1,
 }]
 render()
 
