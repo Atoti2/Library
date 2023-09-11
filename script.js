@@ -28,15 +28,18 @@ let myLibrary = [{
     id: 1,
 }]
 
-render()
+
 
 function setLocalStorage(){
     localStorage.setItem("library", JSON.stringify(myLibrary))
 }
 
+
+
 function getLocalStorage(){
     myLibrary = JSON.parse(localStorage.getItem("library"))
 }
+render()
 
 function openModal(){
    modal.style.display = "block"
@@ -95,8 +98,9 @@ function findBook(title){
     }
 }
 
+
 function render(){
-    setLocalStorage()
+    getLocalStorage()
     books.innerHTML = ""
     myLibrary.forEach((book) => {
         books.innerHTML += `    
@@ -110,3 +114,4 @@ function render(){
     </div>`
     })
 }
+
