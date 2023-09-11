@@ -29,6 +29,7 @@ function setLocalStorage(){
 
 function getLocalStorage(){
     myLibrary = JSON.parse(localStorage.getItem("library"))
+
 }
 
 function openModal(){
@@ -58,6 +59,7 @@ function changeRead(bookTitle){
 
 function addBookToLibrary(){
     localStorage.clear()
+    getLocalStorage()
     if(title.value && author.value && page.value){
         myLibrary.push(new Book(title.value, author.value, page.value, getReadState(read.checked), idCount++))
         author.value = ""
