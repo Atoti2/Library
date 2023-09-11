@@ -19,9 +19,7 @@ class Book {
     }
 }
 
-let myLibrary = [{
-
-}]
+let myLibrary = [{}]
 
 render()
 
