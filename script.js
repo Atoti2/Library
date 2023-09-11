@@ -8,7 +8,11 @@ const modal = document.querySelector('.modal')
 const main = document.querySelector('main')
 const books = document.querySelector('.books')
 
-const myLibrary = []
+let myLibrary = [{
+
+}]
+render()
+
 let idCount = 1
 class Book {
     constructor(title, author, page, read, id) {
@@ -18,6 +22,14 @@ class Book {
       this.read = read;
       this.id = id
     }
+}
+
+function setLocalStorage(){
+    localStorage.setItem("library", JSON.stringify(myLibrary))
+}
+
+function getLocalStorage(){
+    myLibrary = JSON.parse(localStorage.getItem("library"))
 }
 
 function openModal(){
@@ -38,18 +50,13 @@ function changeRead(bookTitle){
     let i = findBook(title)
     if(myLibrary[i].read === "Already read"){
         myLibrary[i].read = "Not yet"
+    
     }else{
         myLibrary[i].read = "Already read"
-    }
-    render()
-    // let found = myLibrary.find((bok) => bok.title === title )
-    // if(found.read === "Already read"){
       
-    // }else if(found.read === "Not yet"){
-    //     found.read ="Already read"
-    //     render()
-    // }
-  
+    }
+    setLocalStorage()
+    render()
 }
 
 function addBookToLibrary(){
@@ -62,6 +69,7 @@ function addBookToLibrary(){
         modal.style.display = ('none')
         main.style.filter = "none"
         console.log(myLibrary);
+        setLocalStorage()
         render()
     }else{
         alert('Fill out the inputs!')
@@ -71,6 +79,7 @@ function addBookToLibrary(){
 function removeBooks(bookTitle){
     let title = bookTitle.parentElement.firstElementChild.innerHTML
     myLibrary.splice(findBook(title), 1)
+    setLocalStorage()
     render()
 }
 
@@ -84,6 +93,7 @@ function findBook(title){
 }
 
 function render(){
+    getLocalStorage()
     books.innerHTML = ""
     myLibrary.forEach((book) => {
         books.innerHTML += `    
