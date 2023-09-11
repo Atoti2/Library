@@ -20,11 +20,7 @@ class Book {
 }
 
 let myLibrary = [{
-    title: 'Harry potter',
-    author: 'Ferike',
-    page: 32,
-    read: 'Not yet',
-    id: 1,
+
 }]
 
 render()
