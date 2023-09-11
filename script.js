@@ -15,7 +15,6 @@ let myLibrary = [{
     read: 'Not yet',
     id: 1,
 }]
-render()
 
 let idCount = 1
 class Book {
