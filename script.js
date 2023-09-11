@@ -27,7 +27,7 @@ let myLibrary = [{
     id: 1,
 }]
 
-
+render()
 
 function setLocalStorage(){
     localStorage.setItem("library", JSON.stringify(myLibrary))
