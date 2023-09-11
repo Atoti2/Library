@@ -55,10 +55,8 @@ function changeRead(bookTitle){
     let i = findBook(title)
     if(myLibrary[i].read === "Already read"){
         myLibrary[i].read = "Not yet"
-    
     }else{
         myLibrary[i].read = "Already read"
-      
     }
     setLocalStorage()
     render()
@@ -88,7 +86,6 @@ function removeBooks(bookTitle){
     render()
 }
 
-
 function findBook(title){
     for(let book of myLibrary){
         if(book.title === title){
@@ -112,4 +109,3 @@ function render(){
     </div>`
     })
 }
-
